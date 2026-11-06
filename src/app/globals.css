@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --color-cream: #fffaf0;
+  --color-cream-dark: #fdf2de;
+  --color-ink: #3a2e2a;
+  --color-yellow: #ffd873;
+  --color-yellow-soft: #fff1c9;
+  --color-pink: #ffb6c8;
+  --color-pink-soft: #ffe1e8;
+  --color-sky: #a9ddf3;
+  --color-sky-soft: #e3f4fc;
+  --color-lavender: #cdbdf0;
+  --color-lavender-soft: #efe7fc;
+  --color-mint: #b6ebd2;
+  --color-mint-soft: #e4f9ee;
+  --color-coral: #ff8a65;
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-cream-dark: var(--color-cream-dark);
+  --color-ink: var(--color-ink);
+  --color-yellow: var(--color-yellow);
+  --color-yellow-soft: var(--color-yellow-soft);
+  --color-pink: var(--color-pink);
+  --color-pink-soft: var(--color-pink-soft);
+  --color-sky: var(--color-sky);
+  --color-sky-soft: var(--color-sky-soft);
+  --color-lavender: var(--color-lavender);
+  --color-lavender-soft: var(--color-lavender-soft);
+  --color-mint: var(--color-mint);
+  --color-mint-soft: var(--color-mint-soft);
+  --color-coral: var(--color-coral);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-ink);
+}
+
+.wiggle-hover:hover {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 7s ease-in-out infinite 1.2s;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
