@@ -4,8 +4,9 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
+import { BuyNowButton } from "@/components/BuyNowButton";
 import { CURRENCY, products } from "@/lib/data";
-import { Star, Heart, Truck, RotateCcw, ShieldCheck } from "lucide-react";
+import { Star, Truck, RotateCcw, ShieldCheck } from "lucide-react";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -118,21 +119,8 @@ export default async function ProductPage({
               </ul>
             </div>
 
-            <div className="mt-8 flex items-center gap-4">
-              <div className="flex items-center rounded-full border border-ink/15 bg-white">
-                <button className="px-4 py-3 text-lg font-bold text-ink/60 hover:text-ink">−</button>
-                <span className="w-8 text-center font-bold text-ink">1</span>
-                <button className="px-4 py-3 text-lg font-bold text-ink/60 hover:text-ink">+</button>
-              </div>
-              <button className="flex-1 rounded-full bg-coral px-6 py-3.5 font-bold text-white shadow-[0_6px_0_0_#d9663f] transition hover:-translate-y-0.5">
-                Add to Cart
-              </button>
-              <button
-                aria-label="Add to wishlist"
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/15 bg-white text-ink/60 transition hover:text-coral"
-              >
-                <Heart className="h-5 w-5" />
-              </button>
+            <div className="mt-8">
+              <BuyNowButton slug={product.slug} />
             </div>
 
             <div className="mt-8 grid grid-cols-3 gap-3 text-center text-xs text-ink/55">

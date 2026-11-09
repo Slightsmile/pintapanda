@@ -2,10 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Heart, Star, Plus } from "lucide-react";
 import { CURRENCY, Product } from "@/lib/data";
+import { trackPixelEvent } from "@/components/MetaPixel";
 
 export function ProductCard({ product }: { product: Product }) {
+  const router = useRouter();
+
+  function handleQuickBuy(e: React.MouseEvent) {
+    e.preventDefault();
+    trackPixelEvent("InitiateCheckout", { content_ids: [product.slug], num_items: 1 });
+    router.push(`/checkout?product=${encodeURIComponent(product.slug)}&qty=1`);
+  }
+
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-[1.75rem] bg-white shadow-sm ring-1 ring-ink/5 transition hover:-translate-y-1.5 hover:shadow-xl">
       <Link
@@ -69,7 +79,8 @@ export function ProductCard({ product }: { product: Product }) {
             )}
           </div>
           <button
-            aria-label="Quick add to cart"
+            aria-label="Buy now"
+            onClick={handleQuickBuy}
             className="flex h-9 w-9 items-center justify-center rounded-full bg-mint text-ink transition hover:scale-110 hover:bg-mint/80"
           >
             <Plus className="h-4 w-4" />
